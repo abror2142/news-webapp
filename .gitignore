@@ -13,3 +13,6 @@ __pycache__/
 
 # Mac Files
 .DS_Store
+
+# Media files
+media/
