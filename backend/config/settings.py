@@ -52,10 +52,11 @@ INSTALLED_APPS = [
 ]
 
 
-CORS_ALLOWED_ORIGINS = config(
-    'CORS_ALLOWED_ORIGINS',
-    cast=lambda v: [s.strip() for s in v.split(',')] if v else [],
-    default=[])
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173'
+]
+
+print(CORS_ALLOWED_ORIGINS)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -65,6 +66,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
