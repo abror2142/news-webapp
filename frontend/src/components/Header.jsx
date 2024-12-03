@@ -3,9 +3,11 @@ import {faGlobe, faBars, faSearch} from "@fortawesome/free-solid-svg-icons";
 
 import LanguageBox from "./LanguageBox";
 import SearchBar from "./SearchBar";
+import { useState } from "react";
 
 function Header({categories}){
     console.log(categories)
+    const [showMenu, setShowMenu] = useState(false)
     return (
         <nav className="nav-bar">
             {/* LOGO */}
@@ -28,18 +30,28 @@ function Header({categories}){
 
             {/* ACTION BUTTONS */}
             <div className="header-action-box">
-              
                 <LanguageBox />
                 
                 <SearchBar />
 
-                <div className="menu-box action-box">
-                    <FontAwesomeIcon 
-                        icon={faBars}
-                        className="icon"
-                    />
+                <div className="menu-box">
+                    <div 
+                        className="menu-box action-box"
+                        onClick={() => setShowMenu((prev) => !prev)}
+                    >
+                        <FontAwesomeIcon 
+                            icon={faBars}
+                            className="icon"
+                            />
+                    </div>
                 </div>
             </div>
+            {
+                showMenu &&
+                <div className="menu">
+                    
+                </div>
+            }
         </nav>
     )
 }
