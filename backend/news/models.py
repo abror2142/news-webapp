@@ -34,6 +34,7 @@ class Status(models.TextChoices):
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
+    image = models.ImageField(upload_to="post-main/")
     description = models.CharField(max_length=255)
     content = HTMLField() # WYSIWYG model format
     created_at = models.DateTimeField(auto_now=True)

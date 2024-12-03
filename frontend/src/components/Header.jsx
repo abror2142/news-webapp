@@ -1,5 +1,5 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faGlobe, faBars, faSearch} from "@fortawesome/free-solid-svg-icons";
+import {faBars, faX} from "@fortawesome/free-solid-svg-icons";
 
 import LanguageBox from "./LanguageBox";
 import SearchBar from "./SearchBar";
@@ -40,7 +40,7 @@ function Header({categories}){
                         onClick={() => setShowMenu((prev) => !prev)}
                     >
                         <FontAwesomeIcon 
-                            icon={faBars}
+                            icon={showMenu ? faX : faBars}
                             className="icon"
                             />
                     </div>

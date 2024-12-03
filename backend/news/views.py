@@ -54,7 +54,7 @@ def upload_image(request):
 
 
 @api_view(['GET'])
-def latest_posts(request: Request):
+def all_posts(request: Request):
     posts = Post.objects.all()
     serializer = PostSerializer(posts, many=True)
     return Response(serializer.data)

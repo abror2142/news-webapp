@@ -1,7 +1,7 @@
 import {createBrowserRouter, createRoutesFromElements, Route} from "react-router-dom";
 
 import Layout, {loader as layoutLoader} from "./hocs/Layout";
-import Home from "./containers/Home";
+import Home, {loader as homeLoader} from "./containers/Home";
 
 
 const routes = createRoutesFromElements(
@@ -10,7 +10,7 @@ const routes = createRoutesFromElements(
         element={<Layout />} 
         loader={layoutLoader}
     >
-        <Route index element={<Home />} />
+        <Route index element={<Home />} loader={homeLoader} />
     </Route>
 )
 

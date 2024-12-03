@@ -1,6 +1,6 @@
 function Footer(){
     return (
-        <div>
+        <div className="footer-content">
             Copyright &copy; 2024. UzNews. All Rights are reserved.
         </div>
     )

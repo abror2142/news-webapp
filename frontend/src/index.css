@@ -18,7 +18,7 @@ img {
     --color-primary: #003F91; /* Main brand color */
     --color-secondary: #DEDEDE; /* Secondary brand color */
     --color-accent: #17a2b8; /* Accent color */
-    --color-background: #F8F8F8; /* Background color */
+    --color-background: #f1f1f1; /* Background color */
     --color-surface: #ffffff; /* Surface color (cards, modals) */
     --color-text: #212529; /* Main text color */
     --color-text-secondary: #6c757d; /* Secondary text color */
@@ -91,7 +91,7 @@ img {
 
 .nav-list {
     display: flex;
-    gap: 1.5em;
+    gap: 1em;
 }
 
 .nav-list li {
@@ -101,7 +101,7 @@ img {
 .nav-list li a {
     color: var(--color-text);
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .nav-list li a:hover{
@@ -111,7 +111,7 @@ img {
 .header-action-box {
     display:  flex;
     align-items: center;
-    gap: 1.5em;
+    gap: 1em;
 }
 
 .action-box {
@@ -200,6 +200,45 @@ img {
     background-color: var(--color-surface);
 }
 
+/* ############
+    HOME PAGE
+   ############ */
+
+.home-page {
+    
+}
+
+.main-content {
+    display: flex;
+    gap: 1.5em;
+}
+
+.latest-news {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.latest-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+.main-post {
+    display: flex;
+}
+
+.main-post-image{
+    width: 480px;
+}
+
 .footer {
     background-color: var(--color-surface);
+    padding: 1em 1.5em;
+    text-align: center;
 }
+
