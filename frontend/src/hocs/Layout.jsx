@@ -17,7 +17,7 @@ function Layout(){
     return (
         <div className="site-wrapper">
             <header className="header">
-                <Header data={data} />
+                <Header categories={data} />
             </header>
 
             <main className="main">

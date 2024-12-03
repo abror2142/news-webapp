@@ -1,8 +1,8 @@
 function Footer(){
     return (
-        <p>
+        <div>
             Copyright &copy; 2024. UzNews. All Rights are reserved.
-        </p>
+        </div>
     )
 }
 
