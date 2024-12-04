@@ -11,6 +11,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from .models import Post, Category
 from .serializers import PostSerializer, CategorySerializer
+from .utils import add_host_to_image_paths
 
 
 @csrf_exempt
@@ -66,3 +67,9 @@ def all_categories(request: Request):
     serializer = CategorySerializer(categories, many=True)
     return Response(serializer.data)
 
+
+@api_view(['GET'])
+def post_view(request: Request, id: int):
+    post = Post.objects.get(pk=id)
+    serializer = PostSerializer(post)
+    return Response(add_host_to_image_paths(serializer.data))
