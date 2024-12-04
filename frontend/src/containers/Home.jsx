@@ -21,11 +21,11 @@ function Home() {
     return (
         <div className="home-page">
             <div className="main-content"> 
-                <div>
+                <div className="main-content-box">
                     <MainPost mainPost={mainPost} />
-                    <div>
-                        <BreakingNews />
-                        <NewsList />
+                    <div className="important-news">
+                        <BreakingNews breakingNewsList={posts} />
+                        <NewsList newsList={posts}/>
                     </div>
                 </div>
                 <LatestNews latestNews={posts} />
