@@ -41,7 +41,12 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
     post_type = models.CharField(max_length=20, choices=PostType)
     status = models.CharField(max_length=20, choices=Status)
+    categories = models.ManyToManyField('Category', through='PostCategory', related_name='posts')
 
+    @property
+    def category_set(self):
+        return self.categories.all()
+    
     def __str__(self):
         return self.title
     

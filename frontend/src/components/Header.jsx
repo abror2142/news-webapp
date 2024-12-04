@@ -6,7 +6,7 @@ import SearchBar from "./SearchBar";
 import { useState } from "react";
 
 function Header({categories}){
-    console.log(categories)
+
     const [showMenu, setShowMenu] = useState(false)
     return (
         <nav className="nav-bar">
