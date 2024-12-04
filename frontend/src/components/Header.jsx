@@ -1,9 +1,10 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBars, faX} from "@fortawesome/free-solid-svg-icons";
-
 import LanguageBox from "./LanguageBox";
 import SearchBar from "./SearchBar";
-import { useState } from "react";
 
 function Header({categories}){
 
@@ -11,9 +12,9 @@ function Header({categories}){
     return (
         <nav className="nav-bar">
             {/* LOGO */}
-            <div className="header-logo">
+            <Link to="/" className="header-logo">
                 
-            </div>
+            </Link>
 
             {/* MENU */}
             <ul className="nav-list">

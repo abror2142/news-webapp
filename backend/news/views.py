@@ -72,4 +72,4 @@ def all_categories(request: Request):
 def post_view(request: Request, id: int):
     post = Post.objects.get(pk=id)
     serializer = PostSerializer(post)
-    return Response(add_host_to_image_paths(serializer.data))
+    return Response(serializer.data)
