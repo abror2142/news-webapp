@@ -10,9 +10,60 @@ from django.conf import settings
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import Post, Category, PostCategory
+from .models import Post, Category, PostCategory, Tag
 from .serializers import PostSerializer, CategorySerializer
 from .utils import add_host_to_image_paths
+
+
+from .models import PostType
+
+@api_view(['GET'])
+def home_view(request: Request):
+    latest_posts = Post.objects.all().order_by('-created_at')[:15]
+
+    main_post_tag = Tag.objects.get(tag_name='Kun Xabari')
+    main_post = Post.objects.filter(tags=main_post_tag).first()
+
+    editors_choice_tag = Tag.objects.get(tag_name='Muharrir Tanlovi')
+    editors_choice_posts = Post.objects.filter(tags=editors_choice_tag)
+
+    important_subject_tag = Tag.objects.get(tag_name='Dolzarb Mavzu')
+    important_subject_posts = Post.objects.filter(tags=important_subject_tag)
+
+    perspective_posts = Post.objects.filter(post_type=PostType.PERSPECTIVE)
+
+    data = {
+        "latest_posts": PostSerializer(latest_posts, many=True).data,
+        "main_post": PostSerializer(main_post).data,
+        "editors_choice_posts": PostSerializer(editors_choice_posts, many=True).data,
+        "important_subject_posts": PostSerializer(important_subject_posts, many=True).data,
+        "persepective_posts": PostSerializer(perspective_posts, many=True).data,   
+    }
+    return Response(data)
+
+
+@api_view(['GET'])
+def all_categories(request: Request):
+    categories = Category.objects.all()
+    serializer = CategorySerializer(categories, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def post_view(request: Request, id: int):
+    post = Post.objects.get(pk=id)
+    serializer = PostSerializer(post)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def category_posts(request: Request, pk: int):
+    print(pk)
+    category = get_object_or_404(Category, pk=pk)
+    posts = Post.objects.filter(categories=category)
+    serializer = PostSerializer(posts, many=True)
+
+    return Response(serializer.data)
 
 
 @csrf_exempt
@@ -54,32 +105,3 @@ def upload_image(request):
         })
     return JsonResponse({'detail': "Wrong request"})
 
-
-@api_view(['GET'])
-def all_posts(request: Request):
-    posts = Post.objects.all()
-    serializer = PostSerializer(posts, many=True)
-    return Response(serializer.data)
-
-
-@api_view(['GET'])
-def all_categories(request: Request):
-    categories = Category.objects.all()
-    serializer = CategorySerializer(categories, many=True)
-    return Response(serializer.data)
-
-
-@api_view(['GET'])
-def post_view(request: Request, id: int):
-    post = Post.objects.get(pk=id)
-    serializer = PostSerializer(post)
-    return Response(serializer.data)
-
-
-@api_view(['GET'])
-def category_posts(request: Request, pk: int):
-    print(pk)
-    category = get_object_or_404(Category, pk=pk)
-    posts = Post.objects.filter(categories=category)
-    serializer = PostSerializer(posts, many=True)
-    return Response(serializer.data)

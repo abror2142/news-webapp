@@ -42,6 +42,7 @@ class Post(models.Model):
     post_type = models.CharField(max_length=20, choices=PostType)
     status = models.CharField(max_length=20, choices=Status)
     categories = models.ManyToManyField('Category', through='PostCategory', related_name='posts')
+    tags = models.ManyToManyField('Tag', through='PostTag', related_name='posts')
 
     @property
     def category_set(self):

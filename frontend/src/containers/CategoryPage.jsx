@@ -1,11 +1,10 @@
 import { useLoaderData } from "react-router-dom";
 
-import axios from "../utils/axios";
 import LatestNews from "../components/LatestNews";
 import MainPost from "../components/MainPost";
 import PostCard from "../components/PostCard";
 
-import { getCategoryPage } from "../utils/DataAPI";
+import { getCategoryPage } from "../utils/dataAPI";
 
 
 export async function loader({params}) {

@@ -1,10 +1,10 @@
 from django.urls import path
 
-from .views import all_categories, all_posts, upload_image, post_view, category_posts
+from .views import all_categories, home_view, upload_image, post_view, category_posts
 
 
 urlpatterns = [
-    path('home/', all_posts, name='all_posts'),
+    path('home/', home_view, name='home_view'),
     path('<int:id>/', post_view, name='post_view'),
     path('layout/', all_categories, name='all_categories'),  
     path('category/<int:pk>/', category_posts, name='category_posts'),  

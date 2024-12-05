@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 
-import { BASE_URL } from "../utils/constants"
 import timeFormatManager from "../utils/timeFormatManager" ;
 
 function NewsList({newsList}) {
@@ -14,7 +13,7 @@ function NewsList({newsList}) {
                             <Link to={`post/${post.id}/`} className="link">
                                 {post.title}
                             </Link>
-                            </p>
+                        </p>
                     </div>
                     <div className="news-list-image">
                         <img src={post.image} />

@@ -8,6 +8,7 @@ import {faFacebook, faTelegram} from "@fortawesome/free-brands-svg-icons";
 import { getPostDetailPage } from "../utils/dataAPI";
 
 
+
 export async function loader ({ params }) {
     const postId = params.id
     const resp = await getPostDetailPage(postId)
