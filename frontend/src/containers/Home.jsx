@@ -1,17 +1,17 @@
 import { useLoaderData } from "react-router-dom";
 
-import axios from "../utils/axios";
 import MainPost from "../components/MainPost";
 import LatestNews from "../components/LatestNews";
 import BreakingNews from "../components/BreakingNews";
 import NewsList from "../components/NewsList";
 
+import { getHomePageData } from "../utils/dataAPI";
 
-const ALL_POSTS_URL = '/news/all/'
 
 export async function loader () {
-    const resp = await axios.get(ALL_POSTS_URL)
-    return resp.data
+    const resp = await getHomePageData()
+    const json = await resp.json()
+    return json
 }
 
 function Home() {

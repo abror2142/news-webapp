@@ -2,13 +2,15 @@ import { Outlet, useLoaderData } from "react-router-dom";
 
 import Footer from "../Components/Footer";
 import Header from "../components/Header";
-import axios from "../utils/axios";
 
-const CATEGORIES_URL = '/news/category/'
+
+import { getLayoutData } from "../utils/dataAPI";
+
 
 export async function loader(){
-    const resp = await axios.get(CATEGORIES_URL)
-   return resp.data
+    const resp = await getLayoutData();
+    const json = await resp.json()
+   return json
 }
 
 function Layout(){

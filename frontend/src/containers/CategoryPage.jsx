@@ -4,13 +4,15 @@ import axios from "../utils/axios";
 import LatestNews from "../components/LatestNews";
 import MainPost from "../components/MainPost";
 import PostCard from "../components/PostCard";
-import timeFormatManager from "../utils/timeFormatManager";
+
+import { getCategoryPage } from "../utils/DataAPI";
+
 
 export async function loader({params}) {
     const categoryId = params.id;
-    const url = `http://localhost:8000/news/category/${categoryId}/`;
-    const resp = await axios.get(url);
-    return resp.data
+    const resp = await getCategoryPage(categoryId)
+    const json = await resp.json()
+    return json
 }
 
 function postGroups(posts) {
@@ -38,9 +40,7 @@ function CategoryPage(){
                     {postGroupList.map((group, index) => {
                         console.log("GROUP:", group)
                         return (
-                           
-                                group.map((postE, index) => <PostCard post={postE}/>)
-                           
+                            group.map((postE, index) => <PostCard post={postE}/>)
                         )
                     })}
                 </div>

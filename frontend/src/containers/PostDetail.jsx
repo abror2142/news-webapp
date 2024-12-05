@@ -1,18 +1,18 @@
 import { useLoaderData } from "react-router-dom";
-import axios from "../utils/axios"
 import LatestNews from "../components/LatestNews";
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCopy, faArrowAltCircleLeft, faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 import {faFacebook, faTelegram} from "@fortawesome/free-brands-svg-icons";
-import { BASE_URL } from "../utils/constants"
+
+import { getPostDetailPage } from "../utils/dataAPI";
 
 
 export async function loader ({ params }) {
     const postId = params.id
-    const URL = BASE_URL + '/news/' + postId + "/"
-    const resp = await axios.get(URL)
-    return resp.data
+    const resp = await getPostDetailPage(postId)
+    const json = await resp.json()
+    return json
 }
 
 function PostDetail() {
