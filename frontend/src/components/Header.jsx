@@ -18,12 +18,12 @@ function Header({categories}){
 
             {/* MENU */}
             <ul className="nav-list">
-                {categories && categories.map((element, index) => {
+                {categories && categories.map((category, index) => {
                     return (
                         <li key={"category" + index} >
-                            <a href="#" className="no-wrap">
-                                {element.category_name}
-                            </a>
+                            <Link to={`/category/${category.id}`} className="no-wrap">
+                                {category.category_name}
+                            </Link>
                         </li>
                     )
                 })}

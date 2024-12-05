@@ -1,6 +1,7 @@
 import os
 import uuid
 
+from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view
 from rest_framework.request import Request
 from rest_framework.response import Response
@@ -9,7 +10,7 @@ from django.conf import settings
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import Post, Category
+from .models import Post, Category, PostCategory
 from .serializers import PostSerializer, CategorySerializer
 from .utils import add_host_to_image_paths
 
@@ -72,4 +73,13 @@ def all_categories(request: Request):
 def post_view(request: Request, id: int):
     post = Post.objects.get(pk=id)
     serializer = PostSerializer(post)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def category_posts(request: Request, pk: int):
+    print(pk)
+    category = get_object_or_404(Category, pk=pk)
+    posts = Post.objects.filter(categories=category)
+    serializer = PostSerializer(posts, many=True)
     return Response(serializer.data)

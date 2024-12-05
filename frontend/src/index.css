@@ -87,7 +87,7 @@ body {
     gap: 1em;
     padding: 2em 2.5em;
     font-family: 'Roboto', sans-serif;
-    max-width: 1300px;
+    max-width: 1440px;
 }
 
 .header {
@@ -224,10 +224,6 @@ body {
 /* ############
     HOME PAGE
    ############ */
-
-.home-page {
-    
-}
 
 .main-content {
     display: flex;
@@ -396,3 +392,61 @@ body {
     text-align: center;
 }
 
+/* ##################
+    CATEGORY PAGE
+################### */
+
+.category-page {
+    display: flex;
+    gap: 1.5em;
+}
+
+.category-page-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+.category-page-post-cards {
+    background-color: var(--color-surface);
+    padding: 1em;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns */
+    gap: 24px; /* Optional: space between grid items */
+  }
+  
+.grid-item {
+    background-color: #f0f0f0;
+    font-size: 18px;
+}
+
+.post-group {
+    display: flex;
+    gap: 1.5em;
+}
+
+.post-card {
+    max-width: 400px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
+
+.post-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+    padding: 0 1em 1em 1em;
+}
+
+.post-time {
+    text-align: end;
+}
+
+.post-title {
+    font-weight: 500;
+}

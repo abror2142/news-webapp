@@ -8,7 +8,7 @@ function MainPost({mainPost}) {
     console.log(mainPost)
     return (
         <div className="main-news">
-            <Link to={`post/${mainPost.id}/`} className="main-post link-div">
+            <Link to={`/post/${mainPost.id}/`} className="main-post link-div">
                 <div className="main-post-content">
                     <p className="main-post-meta">{mainPost.categories[0].category_name} {timeFormatManager(mainPost.created_at)}</p>
                     <h2 className="main-post-title link">{mainPost.title}</h2>
