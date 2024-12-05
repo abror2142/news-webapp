@@ -51,12 +51,9 @@ INSTALLED_APPS = [
     'news',
 ]
 
-
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173'
 ]
-
-print(CORS_ALLOWED_ORIGINS)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

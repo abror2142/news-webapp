@@ -95,8 +95,6 @@ body {
     width: 100%;
 }
 
-
-
 .nav-bar {
     display: flex;
     justify-content: space-between;
@@ -223,12 +221,16 @@ body {
 
 /* ############
     HOME PAGE
-   ############ */
+############ */
 
 .main-content {
     display: flex;
     gap: 1.5em;
 }
+
+/* #########################
+   LATEST NEWS COMPONENT
+######################### */
 
 .latest-news {
     max-width: 300px;
@@ -257,6 +259,9 @@ body {
     text-align: end;
 }
 
+/* #######################
+    MAIN POST COMPONENT
+######################## */
 
 .main-post {
     display: flex;
@@ -281,8 +286,10 @@ body {
     height: 350px;
 }
 
+/* ##################
+    BREAKING NEWS 
+###################*/
 
-/* BREAKING NEWS */
 .important-news{
     display: flex;
     gap: 1em;
@@ -309,6 +316,10 @@ body {
     font-weight: 500;
 }
 
+/* #######################
+    NEWS LIST COMPONENT
+######################## */
+
 .news-list-box {
     display: flex;
     flex-direction: column;
@@ -332,8 +343,6 @@ body {
     font-size: 1.1em;
     font-weight: 500;
 }
-
-
 
 /* ###############
     POST DETAIL
@@ -368,7 +377,6 @@ body {
 .post-detail-action-icon:hover {
     color: var(--color-background);
 }
-
 
 .post-detail {
     display: flex;
@@ -427,6 +435,10 @@ body {
     display: flex;
     gap: 1.5em;
 }
+
+/* #######################
+    POST CARD COMPONENT
+######################## */
 
 .post-card {
     max-width: 400px;
