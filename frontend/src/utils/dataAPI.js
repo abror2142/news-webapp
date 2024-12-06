@@ -1,11 +1,12 @@
 export const BASE_URL = "http://localhost:8000/"
 
-export const getURL = (name, id=null) => {
+export const getURL = (name, id=null, tag=null) => {
     const URLs = {
         LAYOUT: BASE_URL + "post/layout/",
         HOME_PAGE: BASE_URL + "post/home/",
         CATEGORY_PAGE: BASE_URL + `post/category/${id}/`,
         POST_DETAIL_PAGE: BASE_URL + `post/${id}/`,
+        TAG_PAGE: BASE_URL + `post/tag/?tag=${tag}`,
     }
     return URLs[name]
 }
@@ -29,21 +30,25 @@ async function request(method, path, data, headers) {
     }
 
     const resp = await fetch(path, options)
-    return resp
+    return resp;
 }
 
 export async function getLayoutData(){
-    return await request('GET', getURL('LAYOUT'))
+    return await request('GET', getURL('LAYOUT'));
 }
 
 export async function getHomePageData() {
-    return await request('GET', getURL('HOME_PAGE'))
+    return await request('GET', getURL('HOME_PAGE'));
 }
 
 export async function getCategoryPage(categoryId) {
-    return await request('GET', getURL('CATEGORY_PAGE', categoryId))
+    return await request('GET', getURL('CATEGORY_PAGE', categoryId));
 }
 
 export async function getPostDetailPage(postId) {
-    return await request('GET', getURL('POST_DETAIL_PAGE', postId))
+    return await request('GET', getURL('POST_DETAIL_PAGE', postId));
+}
+
+export async function getTagPage(tag) {
+    return await  request('GET', getURL('TAG_PAGE', null, tag));
 }

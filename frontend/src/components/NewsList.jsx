@@ -10,7 +10,7 @@ function NewsList({newsList}) {
                     <div>
                         <p className="news-list-meta">{post.categories[0].category_name} | {timeFormatManager(post.created_at, false, true)}</p>
                         <p className="news-list-title">
-                            <Link to={`post/${post.id}/`} className="link">
+                            <Link to={`/post/${post.id}/`} className="link">
                                 {post.title}
                             </Link>
                         </p>

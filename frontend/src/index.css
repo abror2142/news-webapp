@@ -96,7 +96,7 @@ body {
 }
 
 .main {
-    max-width: 100%;
+    width: 100%;
 }
 
 .nav-bar {
@@ -509,4 +509,54 @@ body {
 .recommendation-box .grid-item {
     background-color: var(--color-secondary);
 }
-    
+
+
+/* ############
+    TAGS PAGE
+############ */
+
+.tag-page {
+    width: 100%;
+    display: flex;
+    gap: 1em;
+    flex-direction: column;
+}
+
+.tag-button-box {
+    display: flex;
+    gap: 1em;
+    padding: 1em;
+    background-color: var(--color-surface);
+}
+
+.tag-button {
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1em;
+    color: var(--color-primary);
+    font-weight: 500;
+    background-color: var(--color-secondary);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.tag-button:hover {
+    background-color: var(--color-background);
+}
+
+.tag-button.active {
+    background-color: var(--color-primary);
+    color: var(--color-background);
+}
+
+.tag-page-content {
+    display: flex;
+    gap: 1.5em;
+}
+
+.tag-page-side {
+    background-color: var(--color-surface);
+    width: 300px;
+}

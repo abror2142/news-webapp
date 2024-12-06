@@ -10,9 +10,8 @@ from django.conf import settings
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import Post, Category, PostCategory, Tag
-from .serializers import PostSerializer, CategorySerializer
-from .utils import add_host_to_image_paths
+from .models import Post, Category, Tag
+from .serializers import PostSerializer, CategorySerializer, TagNameSerializer
 
 
 from .models import PostType
@@ -21,16 +20,16 @@ from .models import PostType
 def home_view(request: Request):
     latest_posts = Post.objects.all().order_by('-created_at')[:15]
 
-    main_post_tag = Tag.objects.get(tag_name='Kun Xabari')
+    main_post_tag = Tag.objects.get(tag_name='NewsOfTheDay')
     main_post = Post.objects.filter(tags=main_post_tag).first()
 
-    editors_choice_tag = Tag.objects.get(tag_name='Muharrir Tanlovi')
+    editors_choice_tag = Tag.objects.get(tag_name='EditorsChoice')
     editors_choice_posts = Post.objects.filter(tags=editors_choice_tag)
 
-    breaking_news_tag = Tag.objects.get(tag_name='Dolzarb Mavzu')
+    breaking_news_tag = Tag.objects.get(tag_name='BreakingNews')
     breaking_news_posts = Post.objects.filter(tags=breaking_news_tag)
 
-    important_subject_tag = Tag.objects.get(tag_name='Muhim Xabarlar')
+    important_subject_tag = Tag.objects.get(tag_name='ImportantNews')
     important_subject_posts = Post.objects.filter(tags=important_subject_tag)
 
     perspective_posts = Post.objects.filter(post_type=PostType.PERSPECTIVE)
@@ -67,7 +66,7 @@ def post_view(request: Request, id: int):
         "recommended_posts": PostSerializer(recommended_posts, many=True).data,
         "latest_posts": PostSerializer(latest_posts, many=True).data,
     }
-    
+
     return Response(data)
 
 
@@ -80,6 +79,24 @@ def category_posts(request: Request, pk: int):
 
     return Response(serializer.data)
 
+
+@api_view(['GET'])
+def tag_page_view(request : Request):
+    tags= Tag.objects.all()
+    tag_list = [tag['tag_name'] for tag in TagNameSerializer(tags, many=True).data]
+
+    if request.query_params.get('tag') is not None:
+        tag = request.query_params.get('tag')
+        if tag == 'LatestNews':
+            latests_posts = Post.objects.all().order_by('-created_at')
+            serializer = PostSerializer(latests_posts, many=True)
+            return Response({"posts": serializer.data, "tags": tag_list})
+        elif tag in tag_list:
+            tag_obj = Tag.objects.get(tag_name=tag)
+            posts = Post.objects.filter(tags=tag_obj)
+            serializer = PostSerializer(posts, many=True)
+            return Response({"posts": serializer.data, "tags": tag_list})
+    return Response({})
 
 @csrf_exempt
 def upload_image(request):
