@@ -8,6 +8,10 @@ import SearchBar from "./SearchBar";
 
 function Header({categories}){
 
+    function handleLinkClick () {
+        setShowMenu(false)
+    }
+
     const [showMenu, setShowMenu] = useState(false)
     return (
         <nav className="nav-bar">
@@ -43,14 +47,33 @@ function Header({categories}){
                         <FontAwesomeIcon 
                             icon={showMenu ? faX : faBars}
                             className="icon"
-                            />
+                        />
                     </div>
                 </div>
             </div>
             {
                 showMenu &&
                 <div className="menu">
-                    
+                    <div className="menu-tags">
+                        <Link className="tag-button" onClick={handleLinkClick}>#So'nggi Yangiliklar</Link>
+                        <Link className="tag-button" onClick={handleLinkClick}>#Dolzarb Xabarlar</Link>
+                        <Link className="tag-button" onClick={handleLinkClick}>#Muhim Xabarlar</Link>
+                        <Link className="tag-button" onClick={handleLinkClick}>#Muahrrir Tanlovi</Link>
+                    </div>
+                    <hr />
+                    <div className="menu-tags">
+                        <Link className="tag-button" onClick={handleLinkClick}>#Kun Xabari</Link>
+                        <Link className="tag-button" onClick={handleLinkClick}>#Hayotiy Voqealar</Link>
+                    </div>
+                    <hr />
+                    <div className="menu-add">
+                        <Link onClick={handleLinkClick}>Rekalam</Link>
+                        <Link onClick={handleLinkClick}> Bog'lanish</Link>
+                    </div>
+                    <hr />
+                    <div className="menu-conf">
+                        <div>Light Mode</div>
+                    </div>
                 </div>
             }
         </nav>
