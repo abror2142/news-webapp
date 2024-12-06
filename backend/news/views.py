@@ -56,8 +56,19 @@ def all_categories(request: Request):
 @api_view(['GET'])
 def post_view(request: Request, id: int):
     post = Post.objects.get(pk=id)
-    serializer = PostSerializer(post)
-    return Response(serializer.data)
+    post_category = post.category_set.all()[0]
+
+    recommended_posts = Post.objects.filter(categories=post_category).order_by('-created_at')[:15]
+
+    latest_posts = Post.objects.all().order_by('-created_at')
+
+    data = {
+        "post":  PostSerializer(post).data,
+        "recommended_posts": PostSerializer(recommended_posts, many=True).data,
+        "latest_posts": PostSerializer(latest_posts, many=True).data,
+    }
+    
+    return Response(data)
 
 
 @api_view(['GET'])

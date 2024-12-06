@@ -6,7 +6,8 @@ import {faCopy, faArrowAltCircleLeft, faArrowLeft} from "@fortawesome/free-solid
 import {faFacebook, faTelegram} from "@fortawesome/free-brands-svg-icons";
 
 import { getPostDetailPage } from "../utils/dataAPI";
-
+ 
+import PostCard from "../components/PostCard";
 
 
 export async function loader ({ params }) {
@@ -17,7 +18,13 @@ export async function loader ({ params }) {
 }
 
 function PostDetail() {
-    const post = useLoaderData()
+    const data = useLoaderData()
+    const  post = data['post']
+    const recommendedPosts = data['recommended_posts']
+    const latestPosts = data['latest_posts']   
+
+    console.log(latestPosts)
+    
     return (
         <div className="post-detail-page">
             <div className="post-detail-action">
@@ -28,15 +35,34 @@ function PostDetail() {
                     <FontAwesomeIcon className="post-detail-action-icon" icon={faFacebook}/>
                 </div>
             </div>
-            <div className="post-detail">
-                <p className="post-detail-meta">{post.categories[0].category_name}</p>
-                <h2 className="post-detail-title">{post.title}</h2>
-                <h3 className="post-detail-description">{post.description}</h3>
-                <div dangerouslySetInnerHTML={{__html: post.content}} className="post-detail-content"></div>
+
+            <div className="post-detail-main">
+                <div className="post-detail-box" >
+                    <div className="post-detail">
+                        <p className="post-detail-meta">{post.categories[0].category_name}</p>
+                        <h2 className="post-detail-title">{post.title}</h2>
+                        <h3 className="post-detail-description">{post.description}</h3>
+                        <div dangerouslySetInnerHTML={{__html: post.content}} className="post-detail-content"></div>
+                    </div>
+                    <div>
+                        <LatestNews latestNews={latestPosts}/>
+                    </div>
+                </div>
+                {
+                    recommendedPosts && 
+                    <div className="recommendation-box">
+                        <h2 className="carousel-title">O'xshash xabarlar</h2>
+                        <div className="grid">
+                            {recommendedPosts.map(post => {
+                                return (
+                                    <PostCard post={post}/>
+                                )
+                            })}
+                        </div>
+                    </div>
+                }
             </div>
-            <div>
-                <LatestNews latestNews={[post, post, post, post, post]}/>
-            </div>
+            
         </div>
     )
 }

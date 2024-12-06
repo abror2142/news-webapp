@@ -95,6 +95,9 @@ body {
     width: 100%;
 }
 
+.main {
+    max-width: 100%;
+}
 
 .nav-bar {
     display: flex;
@@ -241,6 +244,7 @@ body {
 .latest-news {
     max-width: 300px;
     min-width: 250px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     gap: 1em;
@@ -357,12 +361,25 @@ body {
 
 .post-detail-page {
     display: flex;
+    gap: 1em;
+    max-width: 100%;
+}
+
+.post-detail-main {
+    display: flex;
+    flex-direction: column;
     gap: 1.5em;
-    padding: 1em 0;
+}
+
+.post-detail-box {
+    display: flex;
+    gap: 1.5em;
+
 }
 
 .post-detail-action{
-    width: 40px;
+    position: relative;
+    width: 50px;
 }
 
 .post-detail-action-icon-box {
@@ -378,11 +395,11 @@ body {
 
 .post-detail-action-icon {
     font-size: 1.5rem;
-    color: var(--color-secondary);
+    color: var(--color-primary);
 }
 
 .post-detail-action-icon:hover {
-    color: var(--color-background);
+    color: var(--color-secondary);
 }
 
 .post-detail {
@@ -427,13 +444,13 @@ body {
     padding: 1em;
 }
 
-.grid-container {
+.category-page .grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns */
     gap: 24px; /* Optional: space between grid items */
   }
   
-.grid-item {
+.category-page .grid-item {
     background-color: #f0f0f0;
     font-size: 18px;
 }
@@ -469,3 +486,27 @@ body {
 .post-title {
     font-weight: 500;
 }
+
+/* ###############
+    POST SLIDER
+############### */
+
+.recommendation-box {
+    padding: 1em 2em;
+    background-color: var(--color-surface);
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    
+}
+
+.recommendation-box .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 1.5em;
+}
+    
+.recommendation-box .grid-item {
+    background-color: var(--color-secondary);
+}
+    
