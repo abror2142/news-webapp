@@ -27,7 +27,10 @@ def home_view(request: Request):
     editors_choice_tag = Tag.objects.get(tag_name='Muharrir Tanlovi')
     editors_choice_posts = Post.objects.filter(tags=editors_choice_tag)
 
-    important_subject_tag = Tag.objects.get(tag_name='Dolzarb Mavzu')
+    breaking_news_tag = Tag.objects.get(tag_name='Dolzarb Mavzu')
+    breaking_news_posts = Post.objects.filter(tags=breaking_news_tag)
+
+    important_subject_tag = Tag.objects.get(tag_name='Muhim Xabarlar')
     important_subject_posts = Post.objects.filter(tags=important_subject_tag)
 
     perspective_posts = Post.objects.filter(post_type=PostType.PERSPECTIVE)
@@ -37,6 +40,7 @@ def home_view(request: Request):
         "main_post": PostSerializer(main_post).data,
         "editors_choice_posts": PostSerializer(editors_choice_posts, many=True).data,
         "important_subject_posts": PostSerializer(important_subject_posts, many=True).data,
+        "breaking_news_posts": PostSerializer(breaking_news_posts, many=True).data,
         "persepective_posts": PostSerializer(perspective_posts, many=True).data,   
     }
     return Response(data)

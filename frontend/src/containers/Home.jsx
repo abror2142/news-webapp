@@ -16,7 +16,11 @@ export async function loader () {
 
 function Home() {
     const posts = useLoaderData()
-    const mainPost = posts[0]
+    
+    const mainPost = posts.main_post;
+    const latestPosts = posts.latest_posts;
+    const importantPosts = posts.important_subject_posts
+    const breakingNews = posts.breaking_news_posts
 
     return (
         <div className="home-page">
@@ -24,11 +28,11 @@ function Home() {
                 <div className="main-content-box">
                     <MainPost mainPost={mainPost} />
                     <div className="important-news">
-                        <BreakingNews breakingNewsList={posts} />
-                        <NewsList newsList={posts}/>
+                        <BreakingNews breakingNewsList={breakingNews} />
+                        <NewsList newsList={importantPosts}/>
                     </div>
                 </div>
-                <LatestNews latestNews={posts} />
+                <LatestNews latestNews={latestPosts} />
             </div>
         </div>
     )
