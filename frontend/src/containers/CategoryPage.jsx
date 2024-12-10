@@ -24,28 +24,27 @@ function postGroups(posts) {
 
 
 function CategoryPage(){
-    const posts = useLoaderData()
-    const mainPost = posts[0]
-    const postGroupList = postGroups(posts)
+    const data = useLoaderData()
+    let categoryPosts = data['category_posts']
+    const latestPosts = data['latest_posts']
+    const mainCategoryPost = categoryPosts[0]
+    categoryPosts = categoryPosts.slice(1)
 
     return (
         <div className="category-page">
             <div className="category-page-content">
                 {/* MAIN POST */}
-                <MainPost mainPost={mainPost}/>
+                <MainPost mainPost={mainCategoryPost}/>
 
                 {/* CATEGORY POST CARDS */}
                 <div className="category-page-post-cards grid-container">
-                    {postGroupList.map((group, index) => {
-                        console.log("GROUP:", group)
-                        return (
-                            group.map((postE, index) => <PostCard post={postE}/>)
-                        )
+                    {categoryPosts && categoryPosts.map((post, index) => {
+                        return (<PostCard key={"category-post-card" + index} post={post}/>)
                     })}
                 </div>
             </div>
             <div>
-                <LatestNews latestNews={posts} />
+                <LatestNews latestNews={latestPosts} />
             </div>
         </div>
     )

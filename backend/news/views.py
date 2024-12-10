@@ -72,12 +72,16 @@ def post_view(request: Request, id: int):
 
 @api_view(['GET'])
 def category_posts(request: Request, pk: int):
-    print(pk)
     category = get_object_or_404(Category, pk=pk)
-    posts = Post.objects.filter(categories=category)
-    serializer = PostSerializer(posts, many=True)
+    category_posts = Post.objects.filter(categories=category)
+    latest_posts = Post.objects.all().order_by('-created_at')
 
-    return Response(serializer.data)
+    data = {
+        "category_posts":  PostSerializer(category_posts, many=True).data,
+        "latest_posts": PostSerializer(latest_posts, many=True).data,
+    }
+
+    return Response(data)
 
 
 @api_view(['GET'])

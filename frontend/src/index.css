@@ -118,7 +118,12 @@ body {
     flex-grow: 1;
     align-items: center;
     justify-content: center;
-    gap: 1vw;
+    gap: .7em;
+}
+
+.nav-list > div {
+    display: flex;
+    gap: .7em;
 }
 
 .nav-list li {
@@ -261,13 +266,20 @@ body {
     gap: 1.5em;
 }
 
+.main-content-box {
+    
+}
+
+.main-content .latest-news{
+    flex-grow: 1;
+}
+
 /* #########################
    LATEST NEWS COMPONENT
 ######################### */
 
 .latest-news {
-    max-width: 300px;
-    min-width: 250px;
+    min-width: 300px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -470,8 +482,8 @@ body {
 
 .category-page .grid-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns */
-    gap: 24px; /* Optional: space between grid items */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
   }
   
 .category-page .grid-item {
@@ -583,4 +595,41 @@ body {
 .tag-page-side {
     background-color: var(--color-surface);
     width: 300px;
+}
+
+
+
+
+@media (min-width:320px)  { 
+    /* smartphones, iPhone, portrait 480x320 phones */ 
+    body {
+        
+    }
+}
+
+@media (min-width:481px)  { 
+    /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ 
+    body {
+        
+    }
+}
+
+@media (min-width:641px)  { 
+    /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ 
+
+}
+
+@media (min-width:961px)  { 
+    /* tablet, landscape iPad, lo-res laptops ands desktops */ 
+
+}
+
+@media (min-width:1025px) { 
+    /* big landscape tablets, laptops, and desktops */ 
+
+}
+
+@media (min-width:1281px) { 
+    /* hi-res laptops and desktops */ 
+
 }

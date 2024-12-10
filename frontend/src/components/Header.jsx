@@ -24,11 +24,14 @@ function Header({categories}){
             <ul className="nav-list">
                 {categories && categories.map((category, index) => {
                     return (
-                        <li key={"category" + index} >
-                            <Link to={`/category/${category.id}`} className="no-wrap">
-                                {category.category_name}
-                            </Link>
-                        </li>
+                        <div>
+                            <li key={"category" + index} >
+                                <Link to={`/category/${category.id}`} className="no-wrap">
+                                    {category.category_name}
+                                </Link>
+                            </li>
+                            {index != categories.length-1 &&  <hr /> }
+                        </div>
                     )
                 })}
             </ul>

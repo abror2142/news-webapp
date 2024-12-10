@@ -22,7 +22,7 @@ function LanguageBox () {
                     onClick={() => setShowLangOptions((prev) => !prev)}
                 >
                     <FontAwesomeIcon icon={faGlobe} className="icon"/>
-                    <p>{language.label}</p>
+                    <p className="language-label">{language.label}</p>
                 </div>
                 {
                     showLangOptions && 
