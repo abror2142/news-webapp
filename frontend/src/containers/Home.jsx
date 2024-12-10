@@ -4,6 +4,7 @@ import MainPost from "../components/MainPost";
 import LatestNews from "../components/LatestNews";
 import BreakingNews from "../components/BreakingNews";
 import NewsList from "../components/NewsList";
+import SingleViewPost from "../components/SingleViewPost";
 
 import { getHomePageData } from "../utils/dataAPI";
 
@@ -23,6 +24,7 @@ function Home() {
     const breakingNews = data.breaking_news_posts
     const editorsChoice = data.editors_choice_posts
     const perspectivePosts = data.persepective_posts
+    const singleViewPosts = data.single_view_posts
 
     return (
         <div className="home-page">
@@ -36,6 +38,8 @@ function Home() {
                 </div>
                 <LatestNews latestNews={latestPosts} />
             </div>
+                <SingleViewPost post={singleViewPosts[0]} />
+                <SingleViewPost post={singleViewPosts[1]} />
         </div>
     )
 }

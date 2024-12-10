@@ -34,13 +34,17 @@ def home_view(request: Request):
 
     perspective_posts = Post.objects.filter(post_type=PostType.PERSPECTIVE)
 
+    single_view_tag = Tag.objects.get(tag_name='SingleView')
+    single_view_post = Post.objects.filter(tags=single_view_tag)[:2]
+
     data = {
         "latest_posts": PostSerializer(latest_posts, many=True).data,
         "main_post": PostSerializer(main_post).data,
         "editors_choice_posts": PostSerializer(editors_choice_posts, many=True).data,
         "important_subject_posts": PostSerializer(important_subject_posts, many=True).data,
         "breaking_news_posts": PostSerializer(breaking_news_posts, many=True).data,
-        "persepective_posts": PostSerializer(perspective_posts, many=True).data,   
+        "persepective_posts": PostSerializer(perspective_posts, many=True).data,
+        "single_view_posts": PostSerializer(single_view_post, many=True).data   
     }
     return Response(data)
 

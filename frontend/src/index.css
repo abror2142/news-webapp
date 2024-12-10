@@ -71,7 +71,6 @@ a {
 }
 
 body {
-    background-color: var(--color-background);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -264,6 +263,12 @@ body {
 
 .main-content {
     display: flex;
+    gap: 1.5em;
+}
+
+.home-page {
+    display: flex;
+    flex-direction: column;
     gap: 1.5em;
 }
 
@@ -604,6 +609,38 @@ body {
 .tag-page-side {
     background-color: var(--color-surface);
     width: 300px;
+}
+
+/* #####################
+    SINGLE VIEW IMAGE
+##################### */
+
+.single-view-post {
+    display: flex;
+
+    justify-content: center;
+    gap: 3em;
+    padding: 1em;
+    border-top: 2px solid black;
+    padding-top: 1em;
+}
+
+.single-view-post-title {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.single-view-post-info {
+    padding: 1em;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.single-view-post-image {
+   max-width: 700px;
+    height: auto;
 }
 
 
