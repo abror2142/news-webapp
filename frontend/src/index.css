@@ -75,6 +75,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    line-height: 1.35;
 }
 
 .site-wrapper {
@@ -303,6 +304,7 @@ body {
 
 .latest-post-meta {
     text-align: end;
+    padding-bottom: .5em;
 }
 
 /* #######################
@@ -376,8 +378,15 @@ body {
     background-color: var(--color-surface);
 }
 
+.news-list-info {
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
+
 .news-list-image > img {
     width: 180px;
+    padding-bottom: .5em;
 }
 
 .news-list-item {

@@ -15,12 +15,14 @@ export async function loader () {
 }
 
 function Home() {
-    const posts = useLoaderData()
+    const data = useLoaderData()
     
-    const mainPost = posts.main_post;
-    const latestPosts = posts.latest_posts;
-    const importantPosts = posts.important_subject_posts
-    const breakingNews = posts.breaking_news_posts
+    const mainPost = data.main_post;
+    const latestPosts = data.latest_posts;
+    const importantPosts = data.important_subject_posts
+    const breakingNews = data.breaking_news_posts
+    const editorsChoice = data.editors_choice_posts
+    const perspectivePosts = data.persepective_posts
 
     return (
         <div className="home-page">
